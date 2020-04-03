@@ -9,8 +9,8 @@ import sys
 LOGFILE = 'logfile.log'
 logging.basicConfig(filename=LOGFILE, format='%(asctime)s %(levelname)s %(message)s', level=logging.DEBUG)
 
-EEG_FILE = 'eegDataDIYA.csv'
-BLINK_FILE = 'blinkDataDIYA.csv'
+EEG_FILE = 'eegDataAdi.csv'
+# BLINK_FILE = 'blinkDataDIYA.csv'
 TGHOST = "localhost"
 TGPORT = 13854
 CONFSTRING = '{"enableRawOutput": false, "format": "Json"}'
@@ -53,11 +53,11 @@ class ThinkGearConnection():
 
     def record_data(self):
         self.sock.write('{"enableRawOutput": false, "format": "Json"}'.encode('ascii'))
-        #logging.info("Recording brain data...")
+        logging.info("Recording brain data...")
         f = open(EEG_FILE,"a")
-        f2 = open(BLINK_FILE,'a')
+        # f2 = open(BLINK_FILE,'a')
         f.write(','.join(EEG_POWER)+ ',' + ','.join(E_SENSE) + '\n')
-        f2.write(','.join(BLINK_STRENGTH) + '\n')
+        # f2.write(','.join(BLINK_STRENGTH) + '\n')
 
         ones=1
         starttime = time.time()
@@ -83,22 +83,22 @@ class ThinkGearConnection():
                     f.write(','.join(self.data_to_write)+'\n')
                     #print(','.join(self.data_to_write))
                     self.data_to_write = []
-                elif 'blinkStrength' in self.json_data:
-                    for i in BLINK_STRENGTH:
-                        #print(type(self.json_data[u'blinkStrength']))
-                        self.data_to_write.append(str(self.json_data[u'blinkStrength']))
+                # elif 'blinkStrength' in self.json_data:
+                #     for i in BLINK_STRENGTH:
+                #         #print(type(self.json_data[u'blinkStrength']))
+                #         self.data_to_write.append(str(self.json_data[u'blinkStrength']))
                         
-                    f2.write(','.join(self.data_to_write)+'\n')
-                    timediff =  time.time() - starttime
-                    if timediff < 1.5:
-                        print("switch")
-                        starttime = time.time()
-                    else:
-                        print(int(self.data_to_write[0]))
-                        starttime = time.time()
-                    sys.stdout.flush()
-                    #print(','.join(self.data_to_write))
-                    self.data_to_write = []
+                #     f2.write(','.join(self.data_to_write)+'\n')
+                #     timediff =  time.time() - starttime
+                #     if timediff < 1.5:
+                #         print("switch")
+                #         starttime = time.time()
+                #     else:
+                #         print(int(self.data_to_write[0]))
+                #         starttime = time.time()
+                #     sys.stdout.flush()
+                #     #print(','.join(self.data_to_write))
+                #     self.data_to_write = []
             except KeyboardInterrupt:
                 print("Quitting..")
                 #f.close()
