@@ -19,10 +19,10 @@ session = tf.Session(config=config)
 set_session(session)
 
 #loading models
-cnnmodel = load_model('cnn.hdf5')
-rnnmodel = load_model('rnn.hdf5')
-fcc = load_model('fcc.hdf5')
-xgbmodel = pickle.load(open("xgb", "rb"))
+cnnmodel = load_model('saved model/cnn.hdf5')
+rnnmodel = load_model('saved model/rnn.hdf5')
+fcc = load_model('saved model/fcc.hdf5')
+xgbmodel = pickle.load(open("saved model/xgb", "rb"))
 
 get_cnn_output = K.function([cnnmodel.layers[0].input],[cnnmodel.layers[5].output])
 get_rnn_output = K.function([rnnmodel.layers[0].input],[rnnmodel.layers[0].output])
