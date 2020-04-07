@@ -1,6 +1,5 @@
 # Think2Type
 Code or the software part of T2T :)
-Physionet: https://physionet.org/content/eegmmidb/1.0.0/
 # TODO:
 1. Make a continuous csv writing data collection script --asd1299
 2. Write a script to read the csv and feed into model (take care of freq, etc)
