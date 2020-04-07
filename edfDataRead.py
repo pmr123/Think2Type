@@ -10,7 +10,8 @@ import os
 # highlevel.write_edf('edf_file.edf', signals, signal_headers, header)
 
 # read an edf file
-signals, signal_headers, header = highlevel.read_edf('Data{}S001R01.edf'.format(os.sep))
+sep = os.sep
+signals, signal_headers, header = highlevel.read_edf('Data{}Physionet{}S001{}S001R01.edf'.format(sep, sep, sep))
 
 front_data = []
 front_meta = []
