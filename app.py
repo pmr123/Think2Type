@@ -1,10 +1,8 @@
-
 from tkinter import *
 from PIL import ImageTk, Image
 
-# from tkinter.ttk import *
-
 def get_input_screen(window):
+    window.destroy()
     window2 = Tk()
     window2.title("Think2Type")
     window2.geometry('600x300')
