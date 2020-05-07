@@ -1,10 +1,8 @@
 import warnings
 warnings.filterwarnings('ignore')
-import scipy.io as sc
 import numpy as np
 import random
 import sys
-from sklearn import preprocessing
 from keras import backend as K
 from keras.models import load_model
 from xgboost import XGBClassifier

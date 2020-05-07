@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import model
 import convert
+from tkinter.filedialog import askopenfile
 
 def get_input_screen(window):
     window.destroy()
@@ -32,6 +33,11 @@ def get_input_screen(window):
     pasw = Entry(window2)
     pasw.place(relx = 0.3, rely=0.75)
 
+def get_file():
+    f = askopenfile(mode ='r', filetypes =['*.csv', '*.txt'])
+    if f is not None:
+        print('dgk')
+
 def upload_file(window):
     window.destroy()
     window2 = Tk()
@@ -39,18 +45,32 @@ def upload_file(window):
     window2.geometry('600x300')
     window2.configure(background='white')
 
+    ## TODO: display the passoword in a text box ---> priority high
+    ## TODO: Fix logo issue ---> priority low
+
+    # img2 = ImageTk.PhotoImage(Image.open("./img/Logo.jpeg"))
+    # panel2 = Label(window2, image = img2)
+    # panel2.place(relx=0.5, rely=0.05, anchor=N)
+
+    btn = Button(window2, text="Upload", width=20, height=4, 
+                 borderwidth= 2, bg="white", relief="solid",
+                 command=lambda: get_file())
+    btn.place(relx=0.5, rely=0.35, anchor=CENTER)
+    
     ## assuming I got the data...
     ## size expected : (x,64)
     ## x == length of the ^(pass)?word$
+
     data = []
     password = ''
     for sequence in data: 
         morse_code = model.predict(sequence)
         character = convert.morse_to_text(morse_code)
         password += character
+    if password == '':
+        password = 'test'
     
-    ## display the passoword in a text box
-    
+
 
 def main():
     window = Tk()
