@@ -3,14 +3,19 @@ from PIL import ImageTk, Image
 import model
 import convert
 from tkinter.filedialog import askopenfile
-
+def go_back(window):
+    window.destroy()
+    main()
 def get_input_screen(window):
     window.destroy()
     window2 = Tk()
     window2.title("Think2Type")
     window2.geometry('600x300')
     window2.configure(background='white')
-
+    btn = Button(window2, text="Back", width=4, height=1, 
+                 borderwidth= 2, bg="white", relief="solid",
+                 command=lambda: go_back(window2))
+    btn.place(relx=0.05, rely=0.10, anchor=CENTER)
     # pixelVirtual = PhotoImage(width=10, height=1)
     # img = ImageTk.PhotoImage(Image.open("img/Logo.jpeg"))
     # panel = Label(window2, image = img)
