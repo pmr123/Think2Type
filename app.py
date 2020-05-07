@@ -1,5 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
+import model
+import convert
 
 def get_input_screen(window):
     window.destroy()
@@ -37,6 +39,18 @@ def upload_file(window):
     window2.geometry('600x300')
     window2.configure(background='white')
 
+    ## assuming I got the data...
+    ## size expected : (x,64)
+    ## x == length of the ^(pass)?word$
+    data = []
+    password = ''
+    for sequence in data: 
+        morse_code = model.predict(sequence)
+        character = convert.morse_to_text(morse_code)
+        password += character
+    
+    ## display the passoword in a text box
+    
 
 def main():
     window = Tk()
