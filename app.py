@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from tkinter.filedialog import askopenfile
 
 def get_input_screen(window):
     window.destroy()
@@ -30,12 +31,26 @@ def get_input_screen(window):
     pasw = Entry(window2)
     pasw.place(relx = 0.3, rely=0.75)
 
+def get_file():
+    f = askopenfile(mode ='r', filetypes =['*.csv', '*.txt'])
+    if f is not None:
+        print('dgk')
+
 def upload_file(window):
     window.destroy()
     window2 = Tk()
     window2.title("Think2Type")
     window2.geometry('600x300')
     window2.configure(background='white')
+
+    img2 = ImageTk.PhotoImage(Image.open("img/Logo.jpeg"))
+    panel2 = Label(window, image = img2)
+    panel2.place(relx=0.5, rely=0.05, anchor=N)
+
+    btn = Button(window, text="Upload Csv", width=20, height=4, 
+                 borderwidth= 2, bg="white", relief="solid",
+                 command=lambda: get_file())
+    btn.place(relx=0.25, rely=0.5, anchor=CENTER)
 
 
 def main():
