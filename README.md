@@ -1,5 +1,9 @@
 # Think2Type
 Code or the software part of T2T :)
+
+# Academic Paper
+https://www.ijert.org/research/think2type-thoughts-to-text-using-eeg-waves-IJERTV9IS060431.pdf
+
 # TODO:
 1. Make a continuous csv writing data collection script --asd1299
 2. Write a script to read the csv and feed into model (take care of freq, etc)
