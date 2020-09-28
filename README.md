@@ -12,8 +12,6 @@ https://www.ijert.org/research/think2type-thoughts-to-text-using-eeg-waves-IJERT
 (Note : Whether to have this process done char by char or word by word or however is totally the coders decision) 
 
 
-// PS : Keep the readme updated so that nobody has the question of whats gng on w the s/w side of the project
-
 # H/W TODO:
 
 1. Test voltage divider
